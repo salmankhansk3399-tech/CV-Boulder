@@ -100,6 +100,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 250px;
+            position: relative;
         }
 
         .template-card.active {
@@ -113,30 +114,123 @@
             border-radius: 4px;
             margin-bottom: 1rem;
             overflow: hidden;
+            position: relative;
         }
 
-        .template-placeholder {
-            height: 100%;
-            padding: 1rem;
-        }
-
-        .placeholder-header {
+        /* Template 1: Professional Classic */
+        .template-placeholder.classic .placeholder-header {
             height: 40px;
             background: var(--secondary-color);
             margin-bottom: 1rem;
             border-radius: 2px;
         }
 
-        .placeholder-section {
+        .template-placeholder.classic .placeholder-section {
             height: 20px;
             background: var(--border-color);
             margin-bottom: 0.75rem;
             border-radius: 2px;
         }
 
-        .placeholder-section:nth-child(2) { width: 70%; }
-        .placeholder-section:nth-child(3) { width: 85%; }
-        .placeholder-section:nth-child(4) { width: 60%; }
+        .template-placeholder.classic .placeholder-section:nth-child(2) { width: 70%; }
+        .template-placeholder.classic .placeholder-section:nth-child(3) { width: 85%; }
+        .template-placeholder.classic .placeholder-section:nth-child(4) { width: 60%; }
+
+        /* Template 2: Modern */
+        .template-placeholder.modern {
+            display: flex;
+            height: 100%;
+        }
+
+        .template-placeholder.modern .sidebar {
+            width: 30%;
+            background: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .template-placeholder.modern .content {
+            flex: 1;
+        }
+
+        .template-placeholder.modern .content-header {
+            height: 30px;
+            background: var(--primary-color);
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
+        .template-placeholder.modern .content-section {
+            height: 15px;
+            background: var(--border-color);
+            margin-bottom: 0.5rem;
+            border-radius: 2px;
+        }
+
+        .template-placeholder.modern .content-section:nth-child(2) { width: 80%; }
+        .template-placeholder.modern .content-section:nth-child(3) { width: 90%; }
+        .template-placeholder.modern .content-section:nth-child(4) { width: 70%; }
+
+        /* Template 3: Executive */
+        .template-placeholder.executive .header {
+            height: 50px;
+            background: var(--secondary-color);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .template-placeholder.executive .section {
+            height: 25px;
+            background: var(--border-color);
+            margin-bottom: 0.75rem;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .template-placeholder.executive .section:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 15px;
+            background: var(--accent-color);
+        }
+
+        .template-placeholder.executive .section:nth-child(2) { width: 75%; margin-left: 10px; }
+        .template-placeholder.executive .section:nth-child(3) { width: 85%; margin-left: 10px; }
+        .template-placeholder.executive .section:nth-child(4) { width: 65%; margin-left: 10px; }
+
+        /* Template 4: Creative */
+        .template-placeholder.creative {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .template-placeholder.creative .header {
+            height: 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .template-placeholder.creative .circle {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .template-placeholder.creative .line {
+            height: 12px;
+            background: rgba(52, 152, 219, 0.3);
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .template-placeholder.creative .line:nth-child(3) { width: 80%; }
+        .template-placeholder.creative .line:nth-child(4) { width: 90%; }
+        .template-placeholder.creative .line:nth-child(5) { width: 70%; }
 
         .template-badge {
             background: var(--success-color);
@@ -146,6 +240,17 @@
             font-size: 0.8rem;
             margin-top: 0.5rem;
             display: inline-block;
+        }
+
+        .template-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
         }
 
         /* ===== BUILDER LAYOUT ===== */
@@ -178,6 +283,8 @@
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
         .step {
@@ -189,7 +296,9 @@
             transition: all 0.3s ease;
             flex: 1;
             text-align: center;
-            margin: 0 5px;
+            margin: 0 2px;
+            min-width: 100px;
+            font-size: 0.9rem;
         }
 
         .step.active {
@@ -235,6 +344,12 @@
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
+            }
+            
+            .step {
+                min-width: 80px;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -416,6 +531,7 @@
             display: flex;
             gap: 0.5rem;
             margin-top: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .color-option {
@@ -435,6 +551,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 0.5rem;
+            flex-wrap: wrap;
         }
 
         /* ===== CHECKBOX & RADIO ===== */
@@ -509,7 +626,8 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .cv-header {
+        /* Classic Template Styles */
+        .cv-template.classic .cv-header {
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--accent-color, #3498db);
@@ -564,13 +682,14 @@
             line-height: 1.6;
         }
 
-        .education-item, .experience-item {
+        .education-item, .experience-item, .certification-item, .project-item {
             margin-bottom: 1.25rem;
             padding-bottom: 1.25rem;
             border-bottom: 1px solid #f5f5f5;
         }
 
-        .education-item:last-child, .experience-item:last-child {
+        .education-item:last-child, .experience-item:last-child,
+        .certification-item:last-child, .project-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
@@ -629,17 +748,91 @@
             border-left: 3px solid var(--accent-color, #3498db);
         }
 
+        /* Modern Template Styles */
+        .cv-template.modern {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .cv-template.modern .cv-sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+        }
+
+        .cv-template.modern .cv-sidebar .cv-name {
+            color: white;
+            font-size: 24px;
+        }
+
+        .cv-template.modern .cv-sidebar .section-title {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .cv-template.modern .cv-sidebar .contact-item i {
+            color: var(--accent-color, #3498db);
+        }
+
+        .cv-template.modern .cv-main {
+            padding: 2rem;
+        }
+
+        /* Executive Template Styles */
+        .cv-template.executive .section-title {
+            border-bottom: 2px solid var(--accent-color, #3498db);
+            padding-bottom: 0.5rem;
+        }
+
+        .cv-template.executive .item-header {
+            border-left: 3px solid var(--accent-color, #3498db);
+            padding-left: 1rem;
+        }
+
+        /* Creative Template Styles */
+        .cv-template.creative {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+        }
+
+        .cv-template.creative .cv-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cv-template.creative .cv-name {
+            font-size: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cv-template.creative .section-title {
+            background: var(--accent-color, #3498db);
+            color: white;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            border-radius: 4px;
+            border: none;
+        }
+
         /* Spacing variations */
         .cv-template.compact .cv-section { margin-bottom: 1rem; }
         .cv-template.compact .education-item,
-        .cv-template.compact .experience-item {
+        .cv-template.compact .experience-item,
+        .cv-template.compact .certification-item,
+        .cv-template.compact .project-item {
             margin-bottom: 0.75rem;
             padding-bottom: 0.75rem;
         }
 
         .cv-template.relaxed .cv-section { margin-bottom: 2rem; }
         .cv-template.relaxed .education-item,
-        .cv-template.relaxed .experience-item {
+        .cv-template.relaxed .experience-item,
+        .cv-template.relaxed .certification-item,
+        .cv-template.relaxed .project-item {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
         }
@@ -733,6 +926,19 @@
             .item-title { font-size: 14px; }
             .page-break { page-break-before: always; }
         }
+
+        /* ===== ENTRY ITEMS ===== */
+        .entry-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #3498db;
+        }
+
+        .remove-entry {
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -750,9 +956,9 @@
             <section class="template-section">
                 <h2><i class="fas fa-layer-group"></i> Select CV Template</h2>
                 <div class="template-preview" id="templatePreview">
-                    <div class="template-card active" data-template="default">
+                    <div class="template-card active" data-template="classic">
                         <div class="template-thumbnail">
-                            <div class="template-placeholder">
+                            <div class="template-placeholder classic">
                                 <div class="placeholder-header"></div>
                                 <div class="placeholder-section"></div>
                                 <div class="placeholder-section"></div>
@@ -763,6 +969,59 @@
                             <h3>Professional Classic</h3>
                             <p>ATS-optimized, clean layout</p>
                             <span class="template-badge">Recommended</span>
+                            <span class="template-tag">ATS-Friendly</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="modern">
+                        <div class="template-thumbnail">
+                            <div class="template-placeholder modern">
+                                <div class="sidebar"></div>
+                                <div class="content">
+                                    <div class="content-header"></div>
+                                    <div class="content-section"></div>
+                                    <div class="content-section"></div>
+                                    <div class="content-section"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Modern Layout</h3>
+                            <p>Contemporary design with sidebar</p>
+                            <span class="template-tag">Creative</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="executive">
+                        <div class="template-thumbnail">
+                            <div class="template-placeholder executive">
+                                <div class="header"></div>
+                                <div class="section"></div>
+                                <div class="section"></div>
+                                <div class="section"></div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Executive</h3>
+                            <p>Formal layout for leadership roles</p>
+                            <span class="template-tag">Professional</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-template="creative">
+                        <div class="template-thumbnail">
+                            <div class="template-placeholder creative">
+                                <div class="header"></div>
+                                <div class="circle"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Creative</h3>
+                            <p>Modern design for creative fields</p>
+                            <span class="template-tag">Innovative</span>
                         </div>
                     </div>
                 </div>
@@ -776,7 +1035,9 @@
                         <div class="step" data-step="2">Education</div>
                         <div class="step" data-step="3">Experience</div>
                         <div class="step" data-step="4">Skills</div>
-                        <div class="step" data-step="5">Customize</div>
+                        <div class="step" data-step="5">Certifications</div>
+                        <div class="step" data-step="6">Projects</div>
+                        <div class="step" data-step="7">Customize</div>
                     </div>
 
                     <form id="cvForm" class="cv-form">
@@ -847,7 +1108,7 @@
                         <div class="form-step" id="step2">
                             <h3><i class="fas fa-graduation-cap"></i> Education</h3>
                             <div id="educationEntries">
-                                <div class="education-entry" data-index="0">
+                                <div class="education-entry entry-item" data-index="0">
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label>Degree Title *</label>
@@ -950,10 +1211,51 @@
                             </div>
                         </div>
 
-                        <!-- Step 5: Customization -->
+                        <!-- Step 5: Certifications & Trainings -->
                         <div class="form-step" id="step5">
+                            <h3><i class="fas fa-certificate"></i> Certifications & Trainings (Optional)</h3>
+                            <div class="form-group">
+                                <p class="section-note" style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">
+                                    Add any professional certifications, workshops, or training programs you've completed.
+                                </p>
+                            </div>
+                            
+                            <div id="certificationEntries">
+                                <!-- Certification entries will be added here -->
+                            </div>
+                            <button type="button" class="btn-secondary" id="addCertification">
+                                <i class="fas fa-plus"></i> Add Certification/Training
+                            </button>
+                        </div>
+
+                        <!-- Step 6: Projects -->
+                        <div class="form-step" id="step6">
+                            <h3><i class="fas fa-project-diagram"></i> Projects (Optional)</h3>
+                            <div class="form-group">
+                                <p class="section-note" style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">
+                                    Showcase your academic, personal, or professional projects.
+                                </p>
+                            </div>
+                            
+                            <div id="projectEntries">
+                                <!-- Project entries will be added here -->
+                            </div>
+                            <button type="button" class="btn-secondary" id="addProject">
+                                <i class="fas fa-plus"></i> Add Project
+                            </button>
+                        </div>
+
+                        <!-- Step 7: Customization -->
+                        <div class="form-step" id="step7">
                             <h3><i class="fas fa-palette"></i> Customization</h3>
                             
+                            <div class="form-group">
+                                <label>Selected Template</label>
+                                <div id="selectedTemplateName" style="padding: 0.75rem; background: #f8f9fa; border-radius: 4px; margin-top: 0.5rem;">
+                                    Professional Classic
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label>Font Family</label>
                                 <select id="fontFamily" class="custom-select">
@@ -971,6 +1273,7 @@
                                     <div class="color-option" data-color="#27ae60" style="background-color: #27ae60;"></div>
                                     <div class="color-option" data-color="#e74c3c" style="background-color: #e74c3c;"></div>
                                     <div class="color-option" data-color="#9b59b6" style="background-color: #9b59b6;"></div>
+                                    <div class="color-option" data-color="#f39c12" style="background-color: #f39c12;"></div>
                                 </div>
                             </div>
 
@@ -1049,7 +1352,7 @@
             <div class="container">
                 <p>CV Builder v1.0 • Template-Preserving Technology • ATS-Optimized Output</p>
                 <p class="footer-note">Note: This CV builder preserves exact template structure. All generated content maintains professional standards.</p>
-    		<p>&copy; 2026 Salman Khan. All Rights Reserved.</p>
+                <p>&copy; 2026 Salman Khan. All Rights Reserved.</p>
             </div>
         </footer>
     </div>
@@ -1065,7 +1368,8 @@
         class FormHandler {
             constructor() {
                 this.currentStep = 1;
-                this.totalSteps = 5;
+                this.totalSteps = 7; // Updated to 7 steps
+                this.selectedTemplate = 'classic'; // Default template
                 this.formData = {
                     personal: {},
                     education: [],
@@ -1075,7 +1379,10 @@
                         soft: [],
                         tools: []
                     },
+                    certifications: [], // New field
+                    projects: [], // New field
                     customization: {
+                        template: 'classic',
                         font: "'Roboto', sans-serif",
                         color: "#3498db",
                         spacing: "normal",
@@ -1089,7 +1396,7 @@
             init() {
                 this.bindEvents();
                 
-                // FIX: Attach listeners to initial existing inputs (Education/Experience)
+                // Attach listeners to initial existing inputs
                 document.querySelectorAll('input, textarea, select').forEach(input => {
                     input.addEventListener('input', () => this.handleInputChange(input));
                     input.addEventListener('change', () => this.handleInputChange(input));
@@ -1097,6 +1404,10 @@
 
                 this.showStep(1);
                 this.updateCVPreview();
+                
+                // Add initial entries for new sections
+                this.addCertificationEntry();
+                this.addProjectEntry();
             }
             
             bindEvents() {
@@ -1126,11 +1437,29 @@
                 // Special buttons
                 document.getElementById('addEducation').addEventListener('click', () => this.addEducationEntry());
                 document.getElementById('addExperience').addEventListener('click', () => this.addExperienceEntry());
+                document.getElementById('addCertification').addEventListener('click', () => this.addCertificationEntry());
+                document.getElementById('addProject').addEventListener('click', () => this.addProjectEntry());
                 document.getElementById('isFresher').addEventListener('change', (e) => this.toggleFresher(e.target.checked));
                 document.getElementById('generateSummary').addEventListener('click', () => this.generateSummary());
                 document.getElementById('recommendSkills').addEventListener('click', () => this.recommendSkills());
                 document.getElementById('addCustomSkill').addEventListener('click', () => this.addCustomSkill());
                 document.getElementById('generateBtn').addEventListener('click', () => this.generateCV());
+                
+                // Template selection
+                document.querySelectorAll('.template-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        this.selectedTemplate = card.dataset.template;
+                        this.formData.customization.template = this.selectedTemplate;
+                        
+                        // Update template name display
+                        const templateName = card.querySelector('h3').textContent;
+                        document.getElementById('selectedTemplateName').textContent = templateName;
+                        
+                        this.updateCVPreview();
+                    });
+                });
                 
                 // Customization
                 document.getElementById('fontFamily').addEventListener('change', (e) => {
@@ -1206,7 +1535,12 @@
             validateCurrentStep() {
                 const currentStepEl = document.getElementById(`step${this.currentStep}`);
                 
-                // FIX: If on Step 3 (Experience) and "Fresher" is checked, skip validation
+                // Steps 5, 6, 7 are optional (Certifications, Projects, Customize)
+                if (this.currentStep === 5 || this.currentStep === 6 || this.currentStep === 7) {
+                    return true;
+                }
+
+                // If on Step 3 (Experience) and "Fresher" is checked, skip validation
                 if (this.currentStep === 3) {
                     const isFresher = document.getElementById('isFresher').checked;
                     if (isFresher) return true;
@@ -1291,15 +1625,17 @@
                 const step = this.getInputStep(input);
                 const fieldName = input.name || input.id;
                 
-                // FIX: Update data based on the STEP number, not just the field name
+                // Update data based on the STEP number
                 if (step === 1) {
                     this.formData.personal[fieldName] = input.value;
                 } else if (step === 2) {
-                    // Update Education whenever ANY field in step 2 changes
                     this.updateEducationData();
                 } else if (step === 3) {
-                    // Update Experience whenever ANY field in step 3 changes
                     this.updateExperienceData();
+                } else if (step === 5) {
+                    this.updateCertificationData();
+                } else if (step === 6) {
+                    this.updateProjectData();
                 }
                 
                 this.updateCVPreview();
@@ -1342,7 +1678,7 @@
             
             getEducationTemplate(index) {
                 return `
-                    <div class="education-entry" data-index="${index}">
+                    <div class="education-entry entry-item" data-index="${index}">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Degree Title *</label>
@@ -1424,7 +1760,7 @@
             
             getExperienceTemplate(index) {
                 return `
-                    <div class="experience-entry" data-index="${index}">
+                    <div class="experience-entry entry-item" data-index="${index}">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Job Title *</label>
@@ -1477,6 +1813,186 @@
                 });
             }
             
+            addCertificationEntry() {
+                const container = document.getElementById('certificationEntries');
+                const index = container.children.length;
+                const template = this.getCertificationTemplate(index);
+                
+                if (container.children.length === 0) {
+                    container.innerHTML = template;
+                } else {
+                    container.insertAdjacentHTML('beforeend', template);
+                }
+                
+                // Add event listeners
+                const newEntry = container.lastElementChild;
+                newEntry.querySelectorAll('input, textarea').forEach(input => {
+                    input.addEventListener('input', () => this.handleInputChange(input));
+                });
+                
+                // Add remove button functionality
+                const removeBtn = newEntry.querySelector('.remove-entry');
+                if (removeBtn) {
+                    removeBtn.addEventListener('click', () => {
+                        newEntry.remove();
+                        this.updateCertificationData();
+                        this.updateCVPreview();
+                    });
+                }
+                
+                this.updateCertificationData();
+                this.updateCVPreview();
+            }
+            
+            getCertificationTemplate(index) {
+                return `
+                    <div class="certification-entry entry-item" data-index="${index}">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Certification/Training Name</label>
+                                <input type="text" name="certName[]" placeholder="Data Analytics and Business Intelligence">
+                            </div>
+                            <div class="form-group">
+                                <label>Issuing Organization</label>
+                                <input type="text" name="certOrg[]" placeholder="State Bank of Pakistan">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Issue Date</label>
+                                <input type="text" name="certDate[]" placeholder="June 2023">
+                            </div>
+                            <div class="form-group">
+                                <label>Credential ID (Optional)</label>
+                                <input type="text" name="certId[]" placeholder="DABI-123456">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description (Optional)</label>
+                            <textarea name="certDesc[]" rows="2" placeholder="Learned cloud architecture, deployment, and security best practices..."></textarea>
+                        </div>
+                        ${index > 0 ? '<button type="button" class="btn-small btn-danger remove-entry"><i class="fas fa-trash"></i> Remove</button>' : ''}
+                    </div>
+                `;
+            }
+            
+            updateCertificationData() {
+                this.formData.certifications = [];
+                const entries = document.querySelectorAll('.certification-entry');
+                
+                entries.forEach(entry => {
+                    const name = entry.querySelector('input[name="certName[]"]')?.value || '';
+                    const organization = entry.querySelector('input[name="certOrg[]"]')?.value || '';
+                    const date = entry.querySelector('input[name="certDate[]"]')?.value || '';
+                    const credentialId = entry.querySelector('input[name="certId[]"]')?.value || '';
+                    const description = entry.querySelector('textarea[name="certDesc[]"]')?.value || '';
+                    
+                    if (name) {
+                        this.formData.certifications.push({
+                            name,
+                            organization,
+                            date,
+                            credentialId,
+                            description
+                        });
+                    }
+                });
+            }
+            
+            addProjectEntry() {
+                const container = document.getElementById('projectEntries');
+                const index = container.children.length;
+                const template = this.getProjectTemplate(index);
+                
+                if (container.children.length === 0) {
+                    container.innerHTML = template;
+                } else {
+                    container.insertAdjacentHTML('beforeend', template);
+                }
+                
+                // Add event listeners
+                const newEntry = container.lastElementChild;
+                newEntry.querySelectorAll('input, textarea').forEach(input => {
+                    input.addEventListener('input', () => this.handleInputChange(input));
+                });
+                
+                // Add remove button functionality
+                const removeBtn = newEntry.querySelector('.remove-entry');
+                if (removeBtn) {
+                    removeBtn.addEventListener('click', () => {
+                        newEntry.remove();
+                        this.updateProjectData();
+                        this.updateCVPreview();
+                    });
+                }
+                
+                this.updateProjectData();
+                this.updateCVPreview();
+            }
+            
+            getProjectTemplate(index) {
+                return `
+                    <div class="project-entry entry-item" data-index="${index}">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" name="projectName[]" placeholder="Database Management System">
+                            </div>
+                            <div class="form-group">
+                                <label>Project Type</label>
+                                <input type="text" name="projectType[]" placeholder="Academic/Personal/Professional">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Technologies Used</label>
+                                <input type="text" name="projectTech[]" placeholder="EViews, Stata, Python">
+                            </div>
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" name="projectDuration[]" placeholder="3 months">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Description</label>
+                            <textarea name="projectDesc[]" rows="3" placeholder="• Designed and implemented a data management software 
+using MS Access with SQL, including database design, queries, and reporting functions to improve data handling 
+efficiency....&#10;• Optimized performance reducing load time by 40%..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Link/GitHub (Optional)</label>
+                            <input type="text" name="projectLink[]" placeholder="https://github.com/username/project">
+                        </div>
+                        ${index > 0 ? '<button type="button" class="btn-small btn-danger remove-entry"><i class="fas fa-trash"></i> Remove</button>' : ''}
+                    </div>
+                `;
+            }
+            
+            updateProjectData() {
+                this.formData.projects = [];
+                const entries = document.querySelectorAll('.project-entry');
+                
+                entries.forEach(entry => {
+                    const name = entry.querySelector('input[name="projectName[]"]')?.value || '';
+                    const type = entry.querySelector('input[name="projectType[]"]')?.value || '';
+                    const technologies = entry.querySelector('input[name="projectTech[]"]')?.value || '';
+                    const duration = entry.querySelector('input[name="projectDuration[]"]')?.value || '';
+                    const description = entry.querySelector('textarea[name="projectDesc[]"]')?.value || '';
+                    const link = entry.querySelector('input[name="projectLink[]"]')?.value || '';
+                    
+                    if (name) {
+                        this.formData.projects.push({
+                            name,
+                            type,
+                            technologies,
+                            duration,
+                            description,
+                            link
+                        });
+                    }
+                });
+            }
+            
             toggleFresher(isFresher) {
                 const experienceSection = document.getElementById('experienceSection');
                 if (isFresher) {
@@ -1494,6 +2010,7 @@
                 const tone = document.getElementById('summaryTone').value;
                 const education = this.formData.education[0]?.degree || 'your field';
                 const hasExperience = this.formData.experience.length > 0;
+                const hasProjects = this.formData.projects.length > 0;
                 
                 let summary = '';
                 
@@ -1501,10 +2018,12 @@
                 if (tone === 'professional') {
                     summary = `${education} professional with strong analytical skills `;
                     summary += hasExperience ? 'and extensive industry experience. ' : 'seeking to leverage academic knowledge in a professional setting. ';
+                    summary += hasProjects ? 'Demonstrated project management capabilities and technical proficiency. ' : '';
                     summary += 'Proven ability to deliver high-quality results and adapt to dynamic environments.';
                 } else if (tone === 'academic') {
                     summary = `${education} graduate with strong research and analytical capabilities. `;
                     summary += 'Demonstrated expertise in applying theoretical knowledge to practical problems. ';
+                    summary += hasProjects ? 'Successfully completed multiple academic projects showcasing problem-solving skills. ' : '';
                     summary += 'Committed to continuous learning and professional development.';
                 } else if (tone === 'corporate') {
                     summary = `Results-driven ${education} professional with a focus on achieving business objectives. `;
@@ -1512,7 +2031,7 @@
                     summary += 'Strong communication and leadership skills.';
                 } else if (tone === 'fresh_graduate') {
                     summary = `Recent ${education} graduate with strong academic foundation `;
-                    summary += 'and passion for continuous learning. ';
+                    summary += hasProjects ? 'and hands-on project experience. ' : 'and passion for continuous learning. ';
                     summary += 'Eager to apply theoretical knowledge in practical settings and contribute to organizational success.';
                 }
                 
@@ -1613,20 +2132,22 @@
             constructor() {
                 this.skillsDatabase = {
                     technical: {
-                        'Computer Science': ['Python', 'Java', 'C++', 'JavaScript', 'SQL', 'Data Structures', 'Algorithms', 'Machine Learning', 'Web Development', 'React', 'Node.js'],
-                        'Economics': ['Statistical Analysis', 'Econometrics', 'Data Analysis', 'Excel', 'R', 'Stata', 'Financial Modeling', 'Market Research', 'Quantitative Analysis'],
-                        'Engineering': ['AutoCAD', 'MATLAB', 'SolidWorks', 'Project Management', 'Technical Drawing', 'CAD/CAM', 'Simulation', 'Prototyping'],
-                        'Business': ['Market Analysis', 'Financial Reporting', 'Business Strategy', 'Project Management', 'Business Development', 'Marketing', 'Sales']
+                        'Computer Science': ['Python', 'Java', 'C++', 'JavaScript', 'SQL', 'Data Structures', 'Algorithms', 'Machine Learning', 'Web Development', 'React', 'Node.js', 'HTML/CSS', 'Database Management'],
+                        'Economics': ['Statistical Analysis', 'Econometrics', 'Data Analysis', 'Excel', 'R', 'Stata', 'Financial Modeling', 'Market Research', 'Quantitative Analysis', 'Forecasting', 'Data Visualization'],
+                        'Engineering': ['AutoCAD', 'MATLAB', 'SolidWorks', 'Project Management', 'Technical Drawing', 'CAD/CAM', 'Simulation', 'Prototyping', 'Circuit Design', 'Systems Analysis'],
+                        'Business': ['Market Analysis', 'Financial Reporting', 'Business Strategy', 'Project Management', 'Business Development', 'Marketing', 'Sales', 'Budgeting', 'Risk Management'],
+                        'Data Science': ['Python', 'R', 'SQL', 'Machine Learning', 'Data Visualization', 'Statistical Analysis', 'Big Data', 'Data Mining', 'Predictive Modeling']
                     },
                     soft: [
                         'Communication', 'Teamwork', 'Problem Solving', 'Leadership', 
                         'Time Management', 'Adaptability', 'Critical Thinking', 'Creativity',
-                        'Attention to Detail', 'Work Ethic', 'Collaboration', 'Presentation'
+                        'Attention to Detail', 'Work Ethic', 'Collaboration', 'Presentation',
+                        'Interpersonal Skills', 'Decision Making', 'Conflict Resolution'
                     ],
                     tools: [
                         'Microsoft Office', 'Google Workspace', 'Git', 'JIRA', 'Slack',
                         'Trello', 'Figma', 'Adobe Creative Suite', 'Salesforce', 'AWS',
-                        'Docker', 'Kubernetes', 'Jenkins'
+                        'Docker', 'Kubernetes', 'Jenkins', 'Tableau', 'Power BI'
                     ]
                 };
                 
@@ -1709,9 +2230,20 @@
                     
                     for (const [field, skills] of Object.entries(this.skillsDatabase.technical)) {
                         if (degree.includes(field.toLowerCase()) || this.isRelatedField(degree, field)) {
-                            recommendations.technical.push(...skills.slice(0, 5)); // Top 5 skills
+                            recommendations.technical.push(...skills.slice(0, 6)); // Top 6 skills
                         }
                     }
+                }
+                
+                // Recommend based on projects
+                if (formData.projects.length > 0) {
+                    recommendations.technical.push('Project Management', 'Problem Solving', 'Documentation');
+                    recommendations.tools.push('Git', 'Microsoft Office');
+                }
+                
+                // Recommend based on certifications
+                if (formData.certifications.length > 0) {
+                    recommendations.soft.push('Continuous Learning', 'Professional Development');
                 }
                 
                 // Recommend based on experience
@@ -1720,7 +2252,7 @@
                     recommendations.tools.push(...this.skillsDatabase.tools.slice(0, 4));
                 } else {
                     // For freshers, emphasize foundational skills
-                    recommendations.soft.push('Communication', 'Teamwork', 'Learning Agility', 'Problem Solving', 'Adaptability');
+                    recommendations.soft.push('Communication', 'Teamwork', 'Learning Agility', 'Problem Solving', 'Adaptability', 'Time Management');
                     recommendations.tools.push('Microsoft Office', 'Google Workspace', 'Git');
                 }
                 
@@ -1734,12 +2266,13 @@
             
             isRelatedField(degree, field) {
                 const fieldMap = {
-                    'computer': ['Computer Science', 'Software', 'Programming', 'IT', 'Information Technology'],
-                    'economic': ['Economics', 'Finance', 'Business', 'Commerce', 'Accounting'],
-                    'engineer': ['Engineering', 'Technical', 'Mechanical', 'Civil', 'Electrical'],
-                    'business': ['Business', 'Management', 'Administration', 'Marketing', 'Sales'],
-                    'medical': ['Healthcare', 'Medical', 'Biology', 'Nursing', 'Pharmacy'],
-                    'science': ['Science', 'Research', 'Laboratory', 'Analysis']
+                    'computer': ['Computer Science', 'Software', 'Programming', 'IT', 'Information Technology', 'Data Science'],
+                    'economic': ['Economics', 'Finance', 'Business', 'Commerce', 'Accounting', 'Banking'],
+                    'engineer': ['Engineering', 'Technical', 'Mechanical', 'Civil', 'Electrical', 'Software'],
+                    'business': ['Business', 'Management', 'Administration', 'Marketing', 'Sales', 'Finance'],
+                    'medical': ['Healthcare', 'Medical', 'Biology', 'Nursing', 'Pharmacy', 'Health Sciences'],
+                    'science': ['Science', 'Research', 'Laboratory', 'Analysis', 'Chemistry', 'Physics'],
+                    'data': ['Data Science', 'Analytics', 'Statistics', 'Machine Learning', 'AI']
                 };
                 
                 for (const [keyword, relatedFields] of Object.entries(fieldMap)) {
@@ -1763,7 +2296,7 @@
             
             init() {
                 // Initial empty template
-                this.previewElement.innerHTML = this.getEmptyTemplate();
+                this.previewElement.innerHTML = this.getEmptyTemplate('classic');
             }
             
             generate(formData) {
@@ -1773,9 +2306,26 @@
             }
             
             buildTemplate(formData) {
-                let template = `
-                    <div class="cv-template ats-optimized ${this.getSpacingClass(formData.customization.spacing)} ${this.getFontClass(formData.customization.font)}">
-                `;
+                const templateType = formData.customization.template || 'classic';
+                let template = `<div class="cv-template ${templateType} ats-optimized ${this.getSpacingClass(formData.customization.spacing)} ${this.getFontClass(formData.customization.font)}">`;
+                
+                // Build template based on type
+                if (templateType === 'modern') {
+                    template += this.buildModernTemplate(formData);
+                } else if (templateType === 'executive') {
+                    template += this.buildExecutiveTemplate(formData);
+                } else if (templateType === 'creative') {
+                    template += this.buildCreativeTemplate(formData);
+                } else {
+                    template += this.buildClassicTemplate(formData);
+                }
+                
+                template += `</div>`;
+                return template;
+            }
+            
+            buildClassicTemplate(formData) {
+                let template = '';
                 
                 // Header
                 template += this.buildHeader(formData.personal);
@@ -1800,17 +2350,171 @@
                     template += this.buildSkills(formData.skills, formData.customization.hideEmpty);
                 }
                 
-                template += `</div>`;
+                // Certifications
+                if (formData.certifications.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildCertifications(formData.certifications, formData.customization.hideEmpty);
+                }
+                
+                // Projects
+                if (formData.projects.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildProjects(formData.projects, formData.customization.hideEmpty);
+                }
                 
                 return template;
             }
             
-            buildHeader(personal) {
+            buildModernTemplate(formData) {
+                let template = '<div class="cv-sidebar">';
+                
+                // Header in sidebar
+                template += this.buildHeader(formData.personal, true);
+                
+                // Skills in sidebar
+                if (this.hasSkills(formData.skills) || !formData.customization.hideEmpty) {
+                    template += this.buildSkills(formData.skills, formData.customization.hideEmpty, true);
+                }
+                
+                // Certifications in sidebar if short
+                if (formData.certifications.length > 0 && formData.certifications.length <= 3) {
+                    template += this.buildCertifications(formData.certifications, formData.customization.hideEmpty, true);
+                }
+                
+                template += '</div><div class="cv-main">';
+                
+                // Professional Summary
+                if (formData.personal.summary || !formData.customization.hideEmpty) {
+                    template += this.buildSummary(formData.personal.summary, formData.customization.hideEmpty);
+                }
+                
+                // Education
+                if (formData.education.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildEducation(formData.education, formData.customization.hideEmpty);
+                }
+                
+                // Experience
+                if (formData.experience.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildExperience(formData.experience, formData.customization.hideEmpty);
+                }
+                
+                // Projects
+                if (formData.projects.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildProjects(formData.projects, formData.customization.hideEmpty);
+                }
+                
+                // Certifications (if many, show in main)
+                if (formData.certifications.length > 3) {
+                    template += this.buildCertifications(formData.certifications, formData.customization.hideEmpty);
+                }
+                
+                template += '</div>';
+                return template;
+            }
+            
+            buildExecutiveTemplate(formData) {
+                let template = '';
+                
+                // Header
+                template += this.buildHeader(formData.personal);
+                
+                // Professional Summary
+                if (formData.personal.summary || !formData.customization.hideEmpty) {
+                    template += this.buildSummary(formData.personal.summary, formData.customization.hideEmpty);
+                }
+                
+                // Experience (first for executives)
+                if (formData.experience.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildExperience(formData.experience, formData.customization.hideEmpty);
+                }
+                
+                // Education
+                if (formData.education.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildEducation(formData.education, formData.customization.hideEmpty);
+                }
+                
+                // Skills
+                if (this.hasSkills(formData.skills) || !formData.customization.hideEmpty) {
+                    template += this.buildSkills(formData.skills, formData.customization.hideEmpty);
+                }
+                
+                // Certifications
+                if (formData.certifications.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildCertifications(formData.certifications, formData.customization.hideEmpty);
+                }
+                
+                // Projects
+                if (formData.projects.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildProjects(formData.projects, formData.customization.hideEmpty);
+                }
+                
+                return template;
+            }
+            
+            buildCreativeTemplate(formData) {
+                let template = '';
+                
+                // Header
+                template += this.buildHeader(formData.personal);
+                
+                // Professional Summary
+                if (formData.personal.summary || !formData.customization.hideEmpty) {
+                    template += this.buildSummary(formData.personal.summary, formData.customization.hideEmpty);
+                }
+                
+                // Projects (first for creatives)
+                if (formData.projects.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildProjects(formData.projects, formData.customization.hideEmpty);
+                }
+                
+                // Skills
+                if (this.hasSkills(formData.skills) || !formData.customization.hideEmpty) {
+                    template += this.buildSkills(formData.skills, formData.customization.hideEmpty);
+                }
+                
+                // Experience
+                if (formData.experience.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildExperience(formData.experience, formData.customization.hideEmpty);
+                }
+                
+                // Education
+                if (formData.education.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildEducation(formData.education, formData.customization.hideEmpty);
+                }
+                
+                // Certifications
+                if (formData.certifications.length > 0 || !formData.customization.hideEmpty) {
+                    template += this.buildCertifications(formData.certifications, formData.customization.hideEmpty);
+                }
+                
+                return template;
+            }
+            
+            buildHeader(personal, isSidebar = false) {
                 const linkedin = personal.linkedin ? 
                     `<div class="contact-item">
                         <i class="fab fa-linkedin"></i>
                         <span>${personal.linkedin}</span>
                     </div>` : '';
+                
+                if (isSidebar) {
+                    return `
+                        <h1 class="cv-name">${personal.fullName || 'Your Name'}</h1>
+                        <div class="cv-contact" style="margin-top: 1rem;">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>${personal.phone || '+92 345 6789043'}</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>${personal.email || 'email@example.com'}</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${personal.city || 'City, Country'}</span>
+                            </div>
+                            ${linkedin}
+                        </div>
+                    `;
+                }
                 
                 return `
                     <div class="cv-header">
@@ -1911,7 +2615,7 @@
                 return experienceHTML;
             }
             
-            buildSkills(skills, hideEmpty) {
+            buildSkills(skills, hideEmpty, isSidebar = false) {
                 const allSkills = [
                     ...skills.technical,
                     ...skills.soft,
@@ -1925,6 +2629,18 @@
                     </div>`;
                 }
                 
+                if (isSidebar) {
+                    let skillsHTML = '<div class="cv-section"><h2 class="section-title">Skills</h2>';
+                    skillsHTML += '<div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">';
+                    
+                    allSkills.forEach(skill => {
+                        skillsHTML += `<span style="background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 12px; margin-bottom: 0.3rem;">${skill}</span>`;
+                    });
+                    
+                    skillsHTML += '</div></div>';
+                    return skillsHTML;
+                }
+                
                 let skillsHTML = '<div class="cv-section"><h2 class="section-title">Skills</h2><div class="skills-list">';
                 
                 allSkills.forEach(skill => {
@@ -1933,6 +2649,78 @@
                 
                 skillsHTML += '</div></div>';
                 return skillsHTML;
+            }
+            
+            buildCertifications(certifications, hideEmpty, isSidebar = false) {
+                if (certifications.length === 0 && hideEmpty) {
+                    return `<div class="cv-section hidden">
+                        <h2 class="section-title">Certifications & Trainings</h2>
+                        <div class="certification-item">[Certifications will appear here]</div>
+                    </div>`;
+                }
+                
+                let certHTML = '<div class="cv-section"><h2 class="section-title">Certifications & Trainings</h2>';
+                
+                certifications.forEach(cert => {
+                    if (isSidebar) {
+                        certHTML += `
+                            <div class="certification-item" style="margin-bottom: 0.75rem;">
+                                <div class="item-title" style="font-size: 13px;">${cert.name}</div>
+                                <div class="item-subtitle" style="font-size: 12px; opacity: 0.8;">${cert.organization}</div>
+                                ${cert.date ? `<div class="item-date" style="font-size: 11px;">${cert.date}</div>` : ''}
+                            </div>
+                        `;
+                    } else {
+                        certHTML += `
+                            <div class="certification-item">
+                                <div class="item-header">
+                                    <div class="item-title">${cert.name}</div>
+                                    ${cert.date ? `<div class="item-date">${cert.date}</div>` : ''}
+                                </div>
+                                <div class="item-subtitle">${cert.organization}</div>
+                                ${cert.credentialId ? `<div class="item-details">Credential ID: ${cert.credentialId}</div>` : ''}
+                                ${cert.description ? `<div class="item-details">${cert.description}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                });
+                
+                certHTML += '</div>';
+                return certHTML;
+            }
+            
+            buildProjects(projects, hideEmpty) {
+                if (projects.length === 0 && hideEmpty) {
+                    return `<div class="cv-section hidden">
+                        <h2 class="section-title">Projects</h2>
+                        <div class="project-item">[Projects will appear here]</div>
+                    </div>`;
+                }
+                
+                let projectHTML = '<div class="cv-section"><h2 class="section-title">Projects</h2>';
+                
+                projects.forEach(project => {
+                    const description = project.description ? 
+                        project.description.split('\n').map(d => `<li>${d}</li>`).join('') : 
+                        '<li>Project details will appear here</li>';
+                    
+                    projectHTML += `
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">${project.name}</div>
+                                ${project.duration ? `<div class="item-date">${project.duration}</div>` : ''}
+                            </div>
+                            <div class="item-subtitle">${project.type} ${project.technologies ? `• ${project.technologies}` : ''}</div>
+                            <div class="item-details">
+                                <ul>${description}</ul>
+                            </div>
+                            ${project.link ? `<div class="item-details"><strong>Link:</strong> ${project.link}</div>` : ''}
+                        </div>
+                    `;
+                });
+                
+                projectHTML += '</div>';
+                return projectHTML;
             }
             
             hasSkills(skills) {
@@ -1962,15 +2750,78 @@
                 }
             }
             
-            getEmptyTemplate() {
+            getEmptyTemplate(templateType) {
+                if (templateType === 'modern') {
+                    return `
+                        <div class="cv-template modern">
+                            <div class="cv-sidebar">
+                                <h1 class="cv-name">Your Name Here</h1>
+                                <div class="cv-contact" style="margin-top: 1rem;">
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <span>+92 345 6789043</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>email@example.com</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Swat, Pakistan</span>
+                                    </div>
+                                </div>
+                                <div class="cv-section">
+                                    <h2 class="section-title">Skills</h2>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
+                                        <span style="background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 12px;">Skill 1</span>
+                                        <span style="background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 12px;">Skill 2</span>
+                                        <span style="background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 12px;">Skill 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cv-main">
+                                <div class="cv-section">
+                                    <h2 class="section-title">Professional Summary</h2>
+                                    <div class="summary-content">
+                                        Fill out the form to generate your professional CV. Your summary will appear here.
+                                    </div>
+                                </div>
+                                
+                                <div class="cv-section">
+                                    <h2 class="section-title">Education</h2>
+                                    <div class="education-item">
+                                        <div class="item-header">
+                                            <div class="item-title">Degree Title</div>
+                                            <div class="item-date">Year</div>
+                                        </div>
+                                        <div class="item-subtitle">Institution Name</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cv-section">
+                                    <h2 class="section-title">Experience</h2>
+                                    <div class="experience-item">
+                                        <div class="item-header">
+                                            <div class="item-title">Job Title</div>
+                                            <div class="item-date">Start - End</div>
+                                        </div>
+                                        <div class="item-subtitle">Company Name</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Default to classic template
                 return `
-                    <div class="cv-template">
+                    <div class="cv-template classic">
                         <div class="cv-header">
                             <h1 class="cv-name">Your Name Here</h1>
                             <div class="cv-contact">
                                 <div class="contact-item">
                                     <i class="fas fa-phone"></i>
-                                    <span>+1 234 567 8900</span>
+                                    <span>+92 345 6789043</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-envelope"></i>
@@ -1978,7 +2829,7 @@
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span>City, Country</span>
+                                    <span>Swat, Pakistan</span>
                                 </div>
                             </div>
                         </div>
@@ -2020,6 +2871,28 @@
                                 <span class="skill-tag">Skill 3</span>
                             </div>
                         </div>
+                        
+                        <div class="cv-section">
+                            <h2 class="section-title">Certifications & Trainings</h2>
+                            <div class="certification-item">
+                                <div class="item-header">
+                                    <div class="item-title">Certification Name</div>
+                                    <div class="item-date">Date</div>
+                                </div>
+                                <div class="item-subtitle">Issuing Organization</div>
+                            </div>
+                        </div>
+                        
+                        <div class="cv-section">
+                            <h2 class="section-title">Projects</h2>
+                            <div class="project-item">
+                                <div class="item-header">
+                                    <div class="item-title">Project Name</div>
+                                    <div class="item-date">Duration</div>
+                                </div>
+                                <div class="item-subtitle">Project Type • Technologies</div>
+                            </div>
+                        </div>
                     </div>
                 `;
             }
@@ -2052,7 +2925,7 @@
                 const name = document.getElementById('fullName').value || 'CV';
                 const filename = `${name.replace(/\s+/g, '_')}_CV.pdf`;
                 
-                // FIX: Reset zoom to ensure correct capture size
+                // Reset zoom to ensure correct capture size
                 const cvPaper = document.querySelector('.cv-paper');
                 const originalTransform = cvPaper.style.transform;
                 cvPaper.style.transform = 'none';
@@ -2064,7 +2937,7 @@
                 exportBtn.disabled = true;
                 
                 try {
-                    // FIX: Simplified options for better compatibility
+                    // Simplified options for better compatibility
                     const opt = {
                         margin: 0,
                         filename: filename,

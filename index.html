@@ -201,36 +201,49 @@
         .template-placeholder.executive .section:nth-child(3) { width: 85%; margin-left: 10px; }
         .template-placeholder.executive .section:nth-child(4) { width: 65%; margin-left: 10px; }
 
-        /* Template 4: Creative */
-        .template-placeholder.creative {
+        /* Template 4: Innovative (with picture placeholder) */
+        .template-placeholder.innovative {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
-        .template-placeholder.creative .header {
+        .template-placeholder.innovative .profile-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin: 1rem auto;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .template-placeholder.innovative .profile-circle::after {
+            content: "👤";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+        }
+
+        .template-placeholder.innovative .header {
             height: 45px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin-bottom: 1rem;
             border-radius: 4px;
         }
 
-        .template-placeholder.creative .circle {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-        }
-
-        .template-placeholder.creative .line {
+        .template-placeholder.innovative .line {
             height: 12px;
             background: rgba(52, 152, 219, 0.3);
             margin-bottom: 0.5rem;
             border-radius: 6px;
         }
 
-        .template-placeholder.creative .line:nth-child(3) { width: 80%; }
-        .template-placeholder.creative .line:nth-child(4) { width: 90%; }
-        .template-placeholder.creative .line:nth-child(5) { width: 70%; }
+        .template-placeholder.innovative .line:nth-child(3) { width: 80%; }
+        .template-placeholder.innovative .line:nth-child(4) { width: 90%; }
+        .template-placeholder.innovative .line:nth-child(5) { width: 70%; }
 
         .template-badge {
             background: var(--success-color);
@@ -437,6 +450,53 @@
 
         .btn-danger:hover {
             background: #c0392b;
+        }
+
+        /* ===== PICTURE UPLOAD ===== */
+        .picture-upload-container {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .picture-upload-container:hover {
+            border-color: var(--primary-color);
+            background: #e9ecef;
+        }
+
+        .picture-upload-container i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .picture-upload-container p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .picture-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary-color);
+            display: none;
+        }
+
+        .picture-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-picture {
+            display: none;
         }
 
         /* ===== SKILLS SECTION ===== */
@@ -790,32 +850,58 @@
             padding-left: 1rem;
         }
 
-        /* Creative Template Styles */
-        .cv-template.creative {
+        /* Innovative Template Styles */
+        .cv-template.innovative {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 3rem;
+            position: relative;
         }
 
-        .cv-template.creative .cv-header {
+        .cv-template.innovative .profile-section {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .cv-template.creative .cv-name {
+        .cv-template.innovative .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 0 auto 1rem;
+        }
+
+        .cv-template.innovative .cv-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cv-template.innovative .cv-name {
             font-size: 32px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.5rem;
         }
 
-        .cv-template.creative .section-title {
+        .cv-template.innovative .section-title {
             background: var(--accent-color, #3498db);
             color: white;
             padding: 0.5rem 1rem;
             display: inline-block;
             border-radius: 4px;
             border: none;
+            margin-top: 1.5rem;
+        }
+
+        .cv-template.innovative .cv-contact {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         /* Spacing variations */
@@ -939,6 +1025,23 @@
         .remove-entry {
             margin-top: 0.5rem;
         }
+
+        /* ===== FILE UPLOAD ===== */
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -1008,20 +1111,20 @@
                         </div>
                     </div>
                     
-                    <div class="template-card" data-template="creative">
+                    <div class="template-card" data-template="innovative">
                         <div class="template-thumbnail">
-                            <div class="template-placeholder creative">
+                            <div class="template-placeholder innovative">
+                                <div class="profile-circle"></div>
                                 <div class="header"></div>
-                                <div class="circle"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
                         </div>
                         <div class="template-info">
-                            <h3>Creative</h3>
-                            <p>Modern design for creative fields</p>
-                            <span class="template-tag">Innovative</span>
+                            <h3>Innovative</h3>
+                            <p>Modern design with profile picture</p>
+                            <span class="template-tag">With Photo</span>
                         </div>
                     </div>
                 </div>
@@ -1081,6 +1184,23 @@
                                     <input type="url" id="linkedin" name="linkedin"
                                            placeholder="https://linkedin.com/in/salmankhan">
                                 </div>
+                            </div>
+
+                            <!-- Profile Picture Upload (Optional) -->
+                            <div class="form-group" id="profilePictureSection">
+                                <label>Profile Picture (Optional - For Innovative Template)</label>
+                                <div class="picture-upload-container" id="pictureUploadArea">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Click to upload profile picture</p>
+                                    <p style="font-size: 0.9rem; color: #888;">Recommended: 500x500px, JPG/PNG</p>
+                                    <input type="file" id="profilePicture" accept=".jpg,.jpeg,.png,.gif" style="display: none;">
+                                </div>
+                                <div class="picture-preview" id="picturePreview">
+                                    <img id="picturePreviewImg" src="" alt="Profile Preview">
+                                </div>
+                                <button type="button" class="btn-small btn-danger remove-picture" id="removePicture">
+                                    <i class="fas fa-trash"></i> Remove Picture
+                                </button>
                             </div>
 
                             <div class="form-group">
@@ -1368,8 +1488,8 @@
         class FormHandler {
             constructor() {
                 this.currentStep = 1;
-                this.totalSteps = 7; // Updated to 7 steps
-                this.selectedTemplate = 'classic'; // Default template
+                this.totalSteps = 7;
+                this.selectedTemplate = 'classic';
                 this.formData = {
                     personal: {},
                     education: [],
@@ -1379,8 +1499,9 @@
                         soft: [],
                         tools: []
                     },
-                    certifications: [], // New field
-                    projects: [], // New field
+                    certifications: [],
+                    projects: [],
+                    picture: null, // New field for profile picture
                     customization: {
                         template: 'classic',
                         font: "'Roboto', sans-serif",
@@ -1408,6 +1529,7 @@
                 // Add initial entries for new sections
                 this.addCertificationEntry();
                 this.addProjectEntry();
+                this.addExperienceEntry();
             }
             
             bindEvents() {
@@ -1461,6 +1583,19 @@
                     });
                 });
                 
+                // Profile Picture Handling
+                document.getElementById('pictureUploadArea').addEventListener('click', () => {
+                    document.getElementById('profilePicture').click();
+                });
+                
+                document.getElementById('profilePicture').addEventListener('change', (e) => {
+                    this.handlePictureUpload(e.target.files[0]);
+                });
+                
+                document.getElementById('removePicture').addEventListener('click', () => {
+                    this.removeProfilePicture();
+                });
+                
                 // Customization
                 document.getElementById('fontFamily').addEventListener('change', (e) => {
                     this.formData.customization.font = e.target.value;
@@ -1487,6 +1622,61 @@
                     this.formData.customization.hideEmpty = e.target.checked;
                     this.updateCVPreview();
                 });
+            }
+            
+            handlePictureUpload(file) {
+                if (!file) return;
+                
+                // Validate file type
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                if (!validTypes.includes(file.type)) {
+                    this.showNotification('Please upload a valid image (JPG, PNG, GIF)', 'error');
+                    return;
+                }
+                
+                // Validate file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    this.showNotification('Image size should be less than 2MB', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.formData.picture = e.target.result;
+                    
+                    // Show preview
+                    const preview = document.getElementById('picturePreview');
+                    const previewImg = document.getElementById('picturePreviewImg');
+                    const removeBtn = document.getElementById('removePicture');
+                    
+                    previewImg.src = e.target.result;
+                    preview.style.display = 'block';
+                    removeBtn.style.display = 'inline-block';
+                    
+                    // Hide upload area
+                    document.getElementById('pictureUploadArea').style.display = 'none';
+                    
+                    this.updateCVPreview();
+                    this.showNotification('Profile picture uploaded successfully!', 'success');
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            removeProfilePicture() {
+                this.formData.picture = null;
+                
+                // Hide preview
+                document.getElementById('picturePreview').style.display = 'none';
+                document.getElementById('removePicture').style.display = 'none';
+                
+                // Show upload area
+                document.getElementById('pictureUploadArea').style.display = 'block';
+                
+                // Clear file input
+                document.getElementById('profilePicture').value = '';
+                
+                this.updateCVPreview();
+                this.showNotification('Profile picture removed', 'success');
             }
             
             showStep(step) {
@@ -1619,14 +1809,14 @@
                 return re.test(phone) && phone.replace(/\D/g, '').length >= 10;
             }
             
-           handleInputChange(input) {
+            handleInputChange(input) {
                 input.style.borderColor = '#dee2e6';
                 
                 const step = this.getInputStep(input);
                 const fieldName = input.name || input.id;
                 
                 // Update data based on the STEP number
-                if (step === 1) {
+                if (step === 1 && !fieldName.includes('Picture')) {
                     this.formData.personal[fieldName] = input.value;
                 } else if (step === 2) {
                     this.updateEducationData();
@@ -1736,7 +1926,11 @@
                 const index = container.children.length;
                 const template = this.getExperienceTemplate(index);
                 
-                container.insertAdjacentHTML('beforeend', template);
+                if (container.children.length === 0) {
+                    container.innerHTML = template;
+                } else {
+                    container.insertAdjacentHTML('beforeend', template);
+                }
                 
                 // Add event listeners
                 const newEntry = container.lastElementChild;
@@ -1850,11 +2044,11 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Certification/Training Name</label>
-                                <input type="text" name="certName[]" placeholder="Data Analytics and Business Intelligence">
+                                <input type="text" name="certName[]" placeholder="AWS Certified Solutions Architect">
                             </div>
                             <div class="form-group">
                                 <label>Issuing Organization</label>
-                                <input type="text" name="certOrg[]" placeholder="State Bank of Pakistan">
+                                <input type="text" name="certOrg[]" placeholder="Amazon Web Services">
                             </div>
                         </div>
                         <div class="form-row">
@@ -1864,7 +2058,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Credential ID (Optional)</label>
-                                <input type="text" name="certId[]" placeholder="DABI-123456">
+                                <input type="text" name="certId[]" placeholder="AWS-123456">
                             </div>
                         </div>
                         <div class="form-group">
@@ -1936,7 +2130,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Project Name</label>
-                                <input type="text" name="projectName[]" placeholder="Database Management System">
+                                <input type="text" name="projectName[]" placeholder="E-Commerce Website">
                             </div>
                             <div class="form-group">
                                 <label>Project Type</label>
@@ -1946,7 +2140,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Technologies Used</label>
-                                <input type="text" name="projectTech[]" placeholder="EViews, Stata, Python">
+                                <input type="text" name="projectTech[]" placeholder="React, Node.js, MongoDB">
                             </div>
                             <div class="form-group">
                                 <label>Duration</label>
@@ -1955,9 +2149,7 @@
                         </div>
                         <div class="form-group">
                             <label>Project Description</label>
-                            <textarea name="projectDesc[]" rows="3" placeholder="• Designed and implemented a data management software 
-using MS Access with SQL, including database design, queries, and reporting functions to improve data handling 
-efficiency....&#10;• Optimized performance reducing load time by 40%..."></textarea>
+                            <textarea name="projectDesc[]" rows="3" placeholder="• Developed a full-stack e-commerce platform...&#10;• Implemented user authentication and payment gateway...&#10;• Optimized performance reducing load time by 40%..."></textarea>
                         </div>
                         <div class="form-group">
                             <label>Project Link/GitHub (Optional)</label>
@@ -2314,8 +2506,8 @@ efficiency....&#10;• Optimized performance reducing load time by 40%..."></tex
                     template += this.buildModernTemplate(formData);
                 } else if (templateType === 'executive') {
                     template += this.buildExecutiveTemplate(formData);
-                } else if (templateType === 'creative') {
-                    template += this.buildCreativeTemplate(formData);
+                } else if (templateType === 'innovative') {
+                    template += this.buildInnovativeTemplate(formData);
                 } else {
                     template += this.buildClassicTemplate(formData);
                 }
@@ -2449,18 +2641,54 @@ efficiency....&#10;• Optimized performance reducing load time by 40%..."></tex
                 return template;
             }
             
-            buildCreativeTemplate(formData) {
+            buildInnovativeTemplate(formData) {
                 let template = '';
                 
+                // Profile section with picture
+                if (formData.picture) {
+                    template += `
+                        <div class="profile-section">
+                            <img src="${formData.picture}" alt="Profile Picture" class="profile-picture">
+                        </div>
+                    `;
+                }
+                
                 // Header
-                template += this.buildHeader(formData.personal);
+                template += '<div class="cv-header">';
+                template += `<h1 class="cv-name">${formData.personal.fullName || 'Your Name'}</h1>`;
+                
+                // Contact info
+                const linkedin = formData.personal.linkedin ? 
+                    `<div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>${formData.personal.linkedin}</span>
+                    </div>` : '';
+                
+                template += `
+                    <div class="cv-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>${formData.personal.phone || '+92 345 6789043'}</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>${formData.personal.email || 'email@example.com'}</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${formData.personal.city || 'City, Country'}</span>
+                        </div>
+                        ${linkedin}
+                    </div>
+                `;
+                template += '</div>';
                 
                 // Professional Summary
                 if (formData.personal.summary || !formData.customization.hideEmpty) {
                     template += this.buildSummary(formData.personal.summary, formData.customization.hideEmpty);
                 }
                 
-                // Projects (first for creatives)
+                // Projects (first for innovative template)
                 if (formData.projects.length > 0 || !formData.customization.hideEmpty) {
                     template += this.buildProjects(formData.projects, formData.customization.hideEmpty);
                 }
@@ -2811,6 +3039,93 @@ efficiency....&#10;• Optimized performance reducing load time by 40%..."></tex
                             </div>
                         </div>
                     `;
+                } else if (templateType === 'innovative') {
+                    return `
+                        <div class="cv-template innovative">
+                            <div class="profile-section">
+                                <div class="profile-picture" style="background: #3498db; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                    👤
+                                </div>
+                            </div>
+                            <div class="cv-header">
+                                <h1 class="cv-name">Your Name Here</h1>
+                                <div class="cv-contact">
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <span>+92 345 6789043</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>email@example.com</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Swat, Pakistan</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Professional Summary</h2>
+                                <div class="summary-content">
+                                    Fill out the form to generate your professional CV. Your summary will appear here.
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Projects</h2>
+                                <div class="project-item">
+                                    <div class="item-header">
+                                        <div class="item-title">Project Name</div>
+                                        <div class="item-date">Duration</div>
+                                    </div>
+                                    <div class="item-subtitle">Project Type • Technologies</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Skills</h2>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Skill 1</span>
+                                    <span class="skill-tag">Skill 2</span>
+                                    <span class="skill-tag">Skill 3</span>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Experience</h2>
+                                <div class="experience-item">
+                                    <div class="item-header">
+                                        <div class="item-title">Job Title</div>
+                                        <div class="item-date">Start - End</div>
+                                    </div>
+                                    <div class="item-subtitle">Company Name</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Education</h2>
+                                <div class="education-item">
+                                    <div class="item-header">
+                                        <div class="item-title">Degree Title</div>
+                                        <div class="item-date">Year</div>
+                                    </div>
+                                    <div class="item-subtitle">Institution Name</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h2 class="section-title">Certifications & Trainings</h2>
+                                <div class="certification-item">
+                                    <div class="item-header">
+                                        <div class="item-title">Certification Name</div>
+                                        <div class="item-date">Date</div>
+                                    </div>
+                                    <div class="item-subtitle">Issuing Organization</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
                 }
                 
                 // Default to classic template
@@ -3056,9 +3371,6 @@ efficiency....&#10;• Optimized performance reducing load time by 40%..."></tex
             window.skillsEngine = new SkillsEngine();
             window.cvGenerator = new CVGenerator();
             window.pdfExporter = new PDFExporter();
-            
-            // Add initial experience entry
-            window.formHandler.addExperienceEntry();
             
             console.log('CV Builder initialized successfully!');
         });
